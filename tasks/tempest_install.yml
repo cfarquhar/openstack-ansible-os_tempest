@@ -83,6 +83,7 @@
     virtualenv_site_packages: "no"
     extra_args: >-
       {{ tempest_developer_mode | ternary(pip_install_developer_constraints | default('--constraint /opt/developer-pip-constraints.txt'), '') }}
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       --constraint {{ tempest_upper_constraints_url }}
       {{ pip_install_options | default('') }}
   register: install_packages
@@ -147,6 +148,7 @@
     virtualenv_site_packages: "no"
     extra_args: >-
       {{ tempest_developer_mode | ternary(pip_install_developer_constraints | default('--constraint /opt/developer-pip-constraints.txt'), '') }}
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       --constraint {{ tempest_upper_constraints_url }}
       {{ pip_install_options | default('') }}
       --isolated
@@ -168,6 +170,7 @@
     virtualenv_site_packages: "no"
     extra_args: >-
       {{ tempest_developer_mode | ternary(pip_install_developer_constraints | default('--constraint /opt/developer-pip-constraints.txt'), '') }}
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       --constraint {{ tempest_upper_constraints_url }}
       {{ pip_install_options | default('') }}
       --isolated
@@ -186,6 +189,7 @@
     virtualenv_site_packages: "no"
     extra_args: >-
       {{ tempest_developer_mode | ternary(pip_install_developer_constraints | default('--constraint /opt/developer-pip-constraints.txt'), '') }}
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       --constraint {{ tempest_upper_constraints_url }}
       {{ pip_install_options | default('') }}
       --isolated
